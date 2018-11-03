@@ -13,3 +13,12 @@ body {
   width: 500px;
   height:500px;
 }
+
+#arriba-izq{
+  background-color: green;
+
+}
+#arriba-der{
+  background-color: red;
+
+}
