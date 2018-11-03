@@ -4,21 +4,86 @@ body {
 
 
 #borde-juego{
-  /*TODO: centrar*/
-  background-color: gray;
+  background: gray;
   border-style: solid;
-  border-width: 30px;
+  border-width: 10px;
   border-color: black;
   border-radius: 50%;
   width: 500px;
   height:500px;
+  /*centrar*/
+  margin:auto;
 }
 
 #arriba-izq{
-  background-color: green;
+  background-color: darkgreen;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 250px 0 0 0;
+  -moz-border-radius: 250px 0 0 0;
+  -webkit-border-radius: 250px 0 0 0;
+  width: 250px;
+  height:250px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
 
+position:absolute;
+right:50vw;
 }
 #arriba-der{
-  background-color: red;
+  background-color: darkred;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 0 250px 0 0;
+  -moz-border-radius: 0 250px 0 0;
+  -webkit-border-radius: 0 250px 0 0;
+  width: 250px;
+  height:250px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+position: absolute;
 
+left:50vw;
+
+}
+#abajo-izq{
+  background-color: gold;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 0 0 0 250px;
+  -moz-border-radius: 0 0  0 250px;
+  -webkit-border-radius: 0 0 0 250px;
+  width: 250px;
+  height:250px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+position: absolute;
+
+right: 50vw;
+top: 250px;
+
+}
+#abajo-der{
+  background-color: darkblue;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 0  0 250px 0;
+  -moz-border-radius: 0 0 250px 0;
+  -webkit-border-radius: 0 0 250px 0;
+  width: 250px;
+  height:250px;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+position: absolute;
+
+left:50vw;
+top:250px;
 }
