@@ -1,0 +1,15 @@
+body {
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/nasty_fabric.png)
+}
+
+
+#borde-juego{
+  /*TODO: centrar*/
+  background-color: gray;
+  border-style: solid;
+  border-width: 30px;
+  border-color: black;
+  border-radius: 50%;
+  width: 500px;
+  height:500px;
+}
