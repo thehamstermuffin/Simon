@@ -2,7 +2,9 @@ let on=false;
 let strict=false;
 let serie=[];
 let serieJugador=[];
-let nivel;
+let nivel=1;
+let ganar;
+let sonido=true;
 
 //Botones e interfaz
 const BOTON_ON =document.querySelector("#on");
@@ -47,22 +49,67 @@ BOTON_EMPEZAR.addEventListener('click',(event) => {
 
 
 
-function limpiarColor(){
 
+function limpiarColor(){
+  ARRIBA_IZQ.style.background="darkgreen";
+  ARRIBA_DER.style.background="darkred";
+  ABAJO_IZQ.style.background="DarkGoldenRod";
+  ABAJO_DER.style.background="darkblue";
 }
 
 function limpiarSerie(){
+  return [];
+}
+
+function reiniciar(){
+  //Reiniciar Variables
+  nivel=1;
+  CONT_NIVEL.innerHTML("1");
+  limpiarColor();
+  serie=[];
+  serieJugador=[];
 
 }
 
+function iluminar(pos){
+  switch (pos) {
+    case 0:ARRIBA_IZQ.style.background="green";
+      if(sonido){
+        let audio=document.getElementById("clip0");
+        audio.play();
+      };
+      break;
+    case 1:ARRIBA_DER.style.background="red";
+      if(sonido){
+        let audio=document.getElementById("clip1");
+        audio.play();
+      };
+        break;
+    case 3:ABAJO_IZQ.style.background="yellow";
+      if(sonido){
+        let audio=document.getElementById("clip3");
+        audio.play();
+      };
+        break;
+    case 2:ABAJO_DER.style.background="blue";
+      if(sonido){
+        let audio=document.getElementById("clip2");
+        audio.play();
+      };
+        break;
+    default:
+
+  }
+}
+
 function jugar(){
-  //Reiniciar Variables
-  serie=[];
-  serieJugador[];
+  reiniciar();
 
+  let sig=Math.floor(Math.random()*4);
+  serie.push(sig);
+  serie.push(sig+1);
 
-  limpiarColor();
-  limpiarSerie();
-
-
+  for(let i=0; i<serie.length; i++){
+    iluminar(serie[i]);//
+  }
 }
