@@ -5,6 +5,7 @@ let serieJugador=[];
 let nivel=1;
 let ganar;
 let sonido=true;
+let cuenta=0;
 
 //Botones e interfaz
 const BOTON_ON =document.querySelector("#on");
@@ -64,16 +65,17 @@ function limpiarSerie(){
 function reiniciar(){
   //Reiniciar Variables
   nivel=1;
-  CONT_NIVEL.innerHTML("1");
+  CONT_NIVEL.innerHTML="1";
   limpiarColor();
   serie=[];
   serieJugador=[];
+  let cuenta=0;
 
 }
 
 function iluminar(pos){
   switch (pos) {
-    case 0:ARRIBA_IZQ.style.background="green";
+    case 0:ARRIBA_IZQ.style.background="lightgreen";
       if(sonido){
         let audio=document.getElementById("clip0");
         audio.play();
@@ -108,8 +110,16 @@ function jugar(){
   let sig=Math.floor(Math.random()*4);
   serie.push(sig);
   serie.push(sig+1);
+  let inter =setInterval(turnoPC(),500);
+inter;
+}
 
-  for(let i=0; i<serie.length; i++){
-    iluminar(serie[i]);//
-  }
+function turnoPC(){
+
+  console.log(cuenta,serie[cuenta]);
+
+  iluminar(serie[cuenta]);
+  //setTimeout(()=>{iluminar(serie[i]);}, 800);//
+  setTimeout(()=>{limpiarColor();}, 800);//
+  cuenta++;
 }
