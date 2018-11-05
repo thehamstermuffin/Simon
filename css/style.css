@@ -116,4 +116,8 @@ body {
 -webkit-box-sizing: border-box;
   /*margin-top: 250px;
   margin-left:250px;*/
+  
+  text-align: center;
+  padding-top: 100px; 
+  
 }
