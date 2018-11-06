@@ -24,7 +24,7 @@ const ABAJO_IZQ = document.querySelector("#abajo-izq");
 BOTON_ON.addEventListener('click',(event) => {
   on = (BOTON_ON.checked == true);
   if(on){
-    CONT_NIVEL.innerHTML="-";
+    reiniciar();
   }
   else{
     CONT_NIVEL.innerHTML="";
@@ -48,9 +48,13 @@ BOTON_EMPEZAR.addEventListener('click',(event) => {
 
 });
 //al hacer click en los colores
+//TODO: agregar serie serieJugador
+//comparara input
+//bug de ceunta
 ARRIBA_IZQ.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(0);
+    console.log(cuenta);
     cuenta++;
     if(cuenta>=serie.length){
       turnoPC();
@@ -102,7 +106,7 @@ function limpiarSerie(){
 function reiniciar(){
   //Reiniciar Variables
   nivel=1;
-  CONT_NIVEL.innerHTML="1";
+  CONT_NIVEL.innerHTML="-";
   limpiarColor();
   serie=[];
   serieJugador=[];
@@ -142,6 +146,7 @@ function iluminar(pos){
   setTimeout(()=>{
     limpiarColor()
   },500);
+  console.log(cuenta);
 }
 
 function comenzarJuego(){
@@ -158,22 +163,20 @@ function turnoPC(){
   let sig=Math.floor(Math.random()*4);
   serie.push(sig);
   CONT_NIVEL.innerHTML=serie.length;//actualizar nivel
-  //mostrar serie
-  console.log(serie);
 
+  //mostrar serie
+  //console.log(serie);
   let inter = setInterval(() =>{
     iluminar(serie[cuenta]);
-    //setTimeout(()=>{limpiarColor();}, 800);
-
     cuenta++;
     if(cuenta >=serie.length){
       clearInterval(inter);
+      //cambiar turno a jugador y reiniciar cuenta
+      turnoJugador=true;
+      cuenta=0;
     }
   },1000);
 
-  //cambiar turno a jugador y reiniciar cuenta
-  turnoJugador=true;
-  cuenta=0;
 }
 //que pasa al perder
 function perder(){
