@@ -17,9 +17,8 @@ const CONT_NIVEL = document.querySelector("#nivel");
 //Colores
 const ARRIBA_IZQ = document.querySelector("#arriba-izq");
 const ARRIBA_DER = document.querySelector("#arriba-der");
-const ABAJO_IZQ = document.querySelector("#abajo-izq");
 const ABAJO_DER = document.querySelector("#abajo-der");
-
+const ABAJO_IZQ = document.querySelector("#abajo-izq");
 
 //Boton de encendido
 BOTON_ON.addEventListener('click',(event) => {
@@ -56,7 +55,34 @@ ARRIBA_IZQ.addEventListener("click", (event)=>{
     if(cuenta>=serie.length){
       turnoPC();
     }
+  }
+});
+ARRIBA_DER.addEventListener("click", (event)=>{
+  if(turnoJugador && on){
+    iluminar(1);
+    cuenta++;
+    if(cuenta>=serie.length){
+      turnoPC();
+    }
+  }
+});
 
+ABAJO_DER.addEventListener("click", (event)=>{
+  if(turnoJugador && on){
+    iluminar(2);
+    cuenta++;
+    if(cuenta>=serie.length){
+      turnoPC();
+    }
+  }
+});
+ABAJO_IZQ.addEventListener("click", (event)=>{
+  if(turnoJugador && on){
+    iluminar(3);
+    cuenta++;
+    if(cuenta>=serie.length){
+      turnoPC();
+    }
   }
 });
 
@@ -126,6 +152,7 @@ function comenzarJuego(){
 }
 
 function turnoPC(){
+  turnoJugador=false; //no permitir hacer nada
   cuenta=0;
   //elegir siguiente color
   let sig=Math.floor(Math.random()*4);
@@ -146,6 +173,7 @@ function turnoPC(){
 
   //cambiar turno a jugador y reiniciar cuenta
   turnoJugador=true;
+  cuenta=0;
 }
 //que pasa al perder
 function perder(){
