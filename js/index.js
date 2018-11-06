@@ -1,5 +1,6 @@
 let on=false;
 let strict=false;
+let turnoJugador=false;
 let serie=[];
 let serieJugador=[];
 let nivel=1;
@@ -29,7 +30,7 @@ BOTON_ON.addEventListener('click',(event) => {
   else{
     CONT_NIVEL.innerHTML="";
     limpiarColor();
-    limpiarSerie();
+  //  limpiarSerie();
   }
 });
 
@@ -47,17 +48,16 @@ BOTON_EMPEZAR.addEventListener('click',(event) => {
   }
 
 });
-
+//al hacer click en los colores
 ARRIBA_IZQ.addEventListener("click", (event)=>{
-  /*let i=0;
-  let inter=setInterval(()=>{
-
-    console.log(i)
-    if(i>=5){
-      clearInterval(inter);
+  if(turnoJugador && on){
+    iluminar(0);
+    cuenta++;
+    if(cuenta>=serie.length){
+      turnoPC();
     }
-    i++;
-  },1000);*/
+
+  }
 });
 
 
@@ -68,11 +68,11 @@ function limpiarColor(){
   ABAJO_IZQ.style.background="DarkGoldenRod";
   ABAJO_DER.style.background="darkblue";
 }
-
+/*
 function limpiarSerie(){
   return [];
-}
-
+}*/
+//restaurar valores
 function reiniciar(){
   //Reiniciar Variables
   nivel=1;
@@ -83,7 +83,7 @@ function reiniciar(){
   cuenta=0;
 
 }
-
+//iluminar y hacer sonido correspondiente
 function iluminar(pos){
   switch (pos) {
     case 0:ARRIBA_IZQ.style.background="lightgreen";
@@ -113,29 +113,41 @@ function iluminar(pos){
     default:
 
   }
+  setTimeout(()=>{
+    limpiarColor()
+  },500);
 }
 
 function comenzarJuego(){
   reiniciar();
 
-  let sig=Math.floor(Math.random()*4);
-  serie.push(sig);
-  serie.push(sig+1);//
-
-
-//inter;
+  turnoPC();
+  //serie.push(sig+1);//
 }
 
 function turnoPC(){
-  let inter = setInterval(() =>{
-    console.log(cuenta,serie[cuenta]);
+  cuenta=0;
+  //elegir siguiente color
+  let sig=Math.floor(Math.random()*4);
+  serie.push(sig);
+  CONT_NIVEL.innerHTML=serie.length;//actualizar nivel
+  //mostrar serie
+  console.log(serie);
 
+  let inter = setInterval(() =>{
     iluminar(serie[cuenta]);
-    setTimeout(()=>{limpiarColor();}, 800);
+    //setTimeout(()=>{limpiarColor();}, 800);
 
     cuenta++;
     if(cuenta >=serie.length){
       clearInterval(inter);
     }
   },1000);
+
+  //cambiar turno a jugador y reiniciar cuenta
+  turnoJugador=true;
+}
+//que pasa al perder
+function perder(){
+
 }
