@@ -54,7 +54,6 @@ BOTON_EMPEZAR.addEventListener('click',(event) => {
 ARRIBA_IZQ.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(0);
-    console.log(cuenta);
     cuenta++;
     if(cuenta>=serie.length){
       turnoPC();
@@ -146,7 +145,6 @@ function iluminar(pos){
   setTimeout(()=>{
     limpiarColor()
   },500);
-  console.log(cuenta);
 }
 
 function comenzarJuego(){
@@ -165,7 +163,6 @@ function turnoPC(){
   CONT_NIVEL.innerHTML=serie.length;//actualizar nivel
 
   //mostrar serie
-  //console.log(serie);
   let inter = setInterval(() =>{
     iluminar(serie[cuenta]);
     cuenta++;
