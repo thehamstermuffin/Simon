@@ -50,22 +50,41 @@ BOTON_EMPEZAR.addEventListener('click',(event) => {
 //al hacer click en los colores
 //TODO: agregar serie serieJugador
 //comparara input
-//bug de ceunta
 ARRIBA_IZQ.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(0);
-    cuenta++;
-    if(cuenta>=serie.length){
-      turnoPC();
+    //si es el boton agregarlo, si no, perder o ignorarlo
+    if(0 == serie[cuenta]){
+      cuenta++;
+      if(cuenta>=serie.length){
+        turnoPC();
+      }
+    }
+    else{
+      if(strict){
+        perder();
+        console.log("perdiste");
+      }
+      else{console.log("error");}//Si no es y tampoco esta activado el strict solo ignorarlo
     }
   }
 });
 ARRIBA_DER.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(1);
-    cuenta++;
-    if(cuenta>=serie.length){
-      turnoPC();
+    //si es el boton agregarlo, si no, perder o ignorarlo
+    if(1 == serie[cuenta]){
+      cuenta++;
+      if(cuenta>=serie.length){
+        turnoPC();
+      }
+    }
+    else{
+      if(strict){
+        perder();
+        console.log("perdiste");
+      }
+      else{console.log("error");}//Si no es y tampoco esta activado el strict solo ignorarlo
     }
   }
 });
@@ -73,18 +92,38 @@ ARRIBA_DER.addEventListener("click", (event)=>{
 ABAJO_DER.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(2);
-    cuenta++;
-    if(cuenta>=serie.length){
-      turnoPC();
+    //si es el boton agregarlo, si no, perder o ignorarlo
+    if(2 == serie[cuenta]){
+      cuenta++;
+      if(cuenta>=serie.length){
+        turnoPC();
+      }
+    }
+    else{
+      if(strict){
+        perder();
+        console.log("perdiste");
+      }
+      else{console.log("error");}//Si no es y tampoco esta activado el strict solo ignorarlo
     }
   }
 });
 ABAJO_IZQ.addEventListener("click", (event)=>{
   if(turnoJugador && on){
     iluminar(3);
-    cuenta++;
-    if(cuenta>=serie.length){
-      turnoPC();
+    //si es el boton agregarlo, si no, perder o ignorarlo
+    if(3 == serie[cuenta]){
+      cuenta++;
+      if(cuenta>=serie.length){
+        turnoPC();
+      }
+    }
+    else{
+      if(strict){
+        perder();
+        console.log("perdiste");
+      }
+      else{console.log("error");}//Si no es y tampoco esta activado el strict solo ignorarlo
     }
   }
 });
@@ -110,6 +149,7 @@ function reiniciar(){
   serie=[];
   serieJugador=[];
   cuenta=0;
+  sonido=true;
 
 }
 //iluminar y hacer sonido correspondiente
@@ -177,5 +217,16 @@ function turnoPC(){
 }
 //que pasa al perder
 function perder(){
-
+  turnoJugador=false;
+  sonido=false;
+  //TODO: animacion al perder
+  iluminar(0);
+  iluminar(1);
+  iluminar(2);
+  iluminar(3);
+  iluminar(2);
+  iluminar(1);
+  iluminar(0);
+  sonido=true;
+  reiniciar();
 }
