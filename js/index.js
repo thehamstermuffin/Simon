@@ -40,14 +40,25 @@ BOTON_STRICT.addEventListener('click',(event) => {
   strict = (BOTON_ON.checked == true);
 });
 
-//Boton de modo estricto
+//Boton de inicio
 BOTON_EMPEZAR.addEventListener('click',(event) => {
   if(on){
-    jugar();
+    comenzarJuego();
   }
 
 });
 
+ARRIBA_IZQ.addEventListener("click", (event)=>{
+  /*let i=0;
+  let inter=setInterval(()=>{
+
+    console.log(i)
+    if(i>=5){
+      clearInterval(inter);
+    }
+    i++;
+  },1000);*/
+});
 
 
 
@@ -69,7 +80,7 @@ function reiniciar(){
   limpiarColor();
   serie=[];
   serieJugador=[];
-  let cuenta=0;
+  cuenta=0;
 
 }
 
@@ -104,22 +115,27 @@ function iluminar(pos){
   }
 }
 
-function jugar(){
+function comenzarJuego(){
   reiniciar();
 
   let sig=Math.floor(Math.random()*4);
   serie.push(sig);
-  serie.push(sig+1);
-  let inter =setInterval(turnoPC(),500);
-inter;
+  serie.push(sig+1);//
+
+
+//inter;
 }
 
 function turnoPC(){
+  let inter = setInterval(() =>{
+    console.log(cuenta,serie[cuenta]);
 
-  console.log(cuenta,serie[cuenta]);
+    iluminar(serie[cuenta]);
+    setTimeout(()=>{limpiarColor();}, 800);
 
-  iluminar(serie[cuenta]);
-  //setTimeout(()=>{iluminar(serie[i]);}, 800);//
-  setTimeout(()=>{limpiarColor();}, 800);//
-  cuenta++;
+    cuenta++;
+    if(cuenta >=serie.length){
+      clearInterval(inter);
+    }
+  },1000);
 }
